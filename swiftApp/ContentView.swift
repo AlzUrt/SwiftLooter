@@ -86,8 +86,15 @@ struct ContentView: View {
             List {
 
                 ForEach(inventory.items) { item in
+                   
                     VStack(alignment: .leading) {
+                        NavigationLink {
+                            LootDetailView(item: item)
+                            } label: {
+                                // Votre vue d'une ligne d'item
+                            }
                         HStack {
+                            
                             Circle()
                                 .fill(Color(item.rarity.showColor()))
                                 .frame(width: 20, height: 20)
@@ -100,6 +107,7 @@ struct ContentView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
+                  
                 }
             }
             .onAppear(perform: {
