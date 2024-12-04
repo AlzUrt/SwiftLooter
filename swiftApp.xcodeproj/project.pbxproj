@@ -17,6 +17,7 @@
 		35451B462CB570B10007A553 /* swiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35451B452CB570B10007A553 /* swiftAppTests.swift */; };
 		35451B502CB570B10007A553 /* swiftAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35451B4F2CB570B10007A553 /* swiftAppUITests.swift */; };
 		35451B522CB570B10007A553 /* swiftAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35451B512CB570B10007A553 /* swiftAppUITestsLaunchTests.swift */; };
+		C4E6B6552D0041D3003A302E /* LootDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6B6542D0041D3003A302E /* LootDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		35451B4B2CB570B10007A553 /* swiftAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35451B4F2CB570B10007A553 /* swiftAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftAppUITests.swift; sourceTree = "<group>"; };
 		35451B512CB570B10007A553 /* swiftAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C4E6B6542D0041D3003A302E /* LootDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				351557922CE4BAAA00D30B34 /* Game.swift */,
 				3515578E2CE4A32D00D30B34 /* AddItemView.swift */,
 				35451B342CB570970007A553 /* swiftAppApp.swift */,
+				C4E6B6542D0041D3003A302E /* LootDetailView.swift */,
 				35451B362CB570970007A553 /* ContentView.swift */,
 				35451B382CB570B00007A553 /* Assets.xcassets */,
 				35451B3A2CB570B00007A553 /* Preview Content */,
@@ -269,6 +272,7 @@
 				35451B372CB570970007A553 /* ContentView.swift in Sources */,
 				351557932CE4BAAA00D30B34 /* Game.swift in Sources */,
 				3515578F2CE4A32D00D30B34 /* AddItemView.swift in Sources */,
+				C4E6B6552D0041D3003A302E /* LootDetailView.swift in Sources */,
 				351557912CE4B6E300D30B34 /* LootItem.swift in Sources */,
 				35451B352CB570970007A553 /* swiftAppApp.swift in Sources */,
 			);
