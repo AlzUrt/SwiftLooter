@@ -67,68 +67,57 @@ import SwiftUI
 class Inventory: ObservableObject {
     @Published var items: [LootItem] = []
     
-    func addItem(_ item: LootItem) {
-        items.append(item)
+    init() {
+        // Populate items directly in init
+        items = lootItems
     }
     
-    func populateItems() {
-        items.append(contentsOf: lootItems)
+    func addItem(_ item: LootItem) {
+        items.append(item)
     }
 }
 
 struct ContentView: View {
     @StateObject var inventory = Inventory()
-
     @State var showAddItemView = false
     
     var body: some View {
         NavigationStack {
             List {
-
                 ForEach(inventory.items) { item in
-                   
-                    VStack(alignment: .leading) {
-                        NavigationLink {
-                            LootDetailView(item: item)
-                            } label: {
-                                // Votre vue d'une ligne d'item
+                    NavigationLink(destination: LootDetailView(item: item)) {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Circle()
+                                    .fill(Color(item.rarity.showColor()))
+                                    .frame(width: 20, height: 20)
+                                Text(item.name)
+                                Spacer()
+                                Text(item.type.showEmoji())
                             }
-                        HStack {
-                            
-                            Circle()
-                                .fill(Color(item.rarity.showColor()))
-                                .frame(width: 20, height: 20)
-                            Text(item.name)
-                            Spacer()
-                            Text(item.type.showEmoji())
-                        }
 
-                        Text("Quantité : \(item.quantity)")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                            Text("Quantité : \(item.quantity)")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
                     }
-                  
                 }
             }
-            .onAppear(perform: {
-                inventory.populateItems()
-            })
             .sheet(isPresented: $showAddItemView, content: {
-                    AddItemView().environmentObject(inventory)
-                })
-            .navigationBarTitle("Loot") // Notre titre de page, choisissez le titre que vous voulez
-                .toolbar(content: { // La barre d'outil de notre page
-                    ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-                        Button(action: {
-                            showAddItemView.toggle() // L'action de notre bouton
-                        }, label: {
-                            Image(systemName: "plus.circle.fill")
-                        })
-                    }
-                })
+                AddItemView().environmentObject(inventory)
+            })
+            .navigationBarTitle("Loot")
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        showAddItemView.toggle()
+                    }, label: {
+                        Image(systemName: "plus.circle.fill")
+                    })
+                }
+            }
         }
         .environmentObject(inventory)
-
     }
 }
 

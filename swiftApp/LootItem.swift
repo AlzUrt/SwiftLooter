@@ -95,7 +95,7 @@ var lootItems = [
     LootItem(quantity: 1, name: "Thunder Bow", type: .thunder, rarity: .legendary, attackStrength: 40, game: availableGames[1]),
     LootItem(quantity: 1, name: "Magic Ring", type: .magic, rarity: .common, attackStrength: nil, game: availableGames[1]),
     LootItem(quantity: 1, name: "Poison Dagger", type: .poison, rarity: .rare, attackStrength: 25, game: availableGames[1]),
-    LootItem(quantity: 1, name: "Wind Shield", type: .wind, rarity: .common, attackStrength: nil, game: availableGames[1])
+    LootItem(quantity: 1, name: "Wind Shield", type: .wind, rarity: .unique, attackStrength: nil, game: availableGames[1])
 ]
 
 //#Preview {
