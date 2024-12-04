@@ -1,3 +1,5 @@
+## CHABERT Amaury | MAZEL Florian | KLEIN Anthony
+
 # 2-App-Basics
 
 ## Exercice 1
@@ -38,7 +40,8 @@
 
 1)  La balise tag() permet d'indexer les éléments du tableau. Cette balise était nécessaire pour identifier l'élément sélectionné.
 
-## Exercice 7
+# 7-Animation
 
 1) Si on n’attend pas avant de lancer l’animation. L’animation se lance en même temps que la vue et donc tous les éléments nécessaires à l’animation ne sont pas encore chargés. Il faut donc attendre que la vue soit chargée avant de lancer l’animation. Et cela rend l'animation plus naturelle.
 
+2) https://docs.google.com/presentation/d/1oAhALVEFKP3mn4E3cSsf5kBMMIShn1WUnsubQeL9IUM/edit?usp=sharing
