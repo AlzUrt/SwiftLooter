@@ -178,6 +178,25 @@ struct LootDetailView: View {
                                     .offset(x: showInfo ? 0 : 20)
                                     .animation(.easeOut.delay(2.0), value: showInfo)
                             }
+                            
+                            VStack(spacing: 0) {
+                                if let customImage = item.customImage,
+                                   let uiImage = UIImage(data: customImage) {
+                                    InfoRow {
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(maxHeight: 200)
+                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                            .opacity(showInfo ? 1 : 0)
+                                            .animation(.easeOut.delay(1.1), value: showInfo)
+                                    }
+                                    
+                                    Divider()
+                                        .opacity(showInfo ? 1 : 0)
+                                        .animation(.easeOut.delay(1.2), value: showInfo)
+                                }
+                            }
                         }
                         .background(Color(uiColor: .secondarySystemGroupedBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
