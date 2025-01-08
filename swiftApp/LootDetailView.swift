@@ -13,14 +13,15 @@ struct LootDetailView: View {
     @State private var showContent = false
     @State private var showUniqueBadge = false
     @State private var showInfo = false
+    @State private var showEditSheet = false
     let item: LootItem
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color(.systemGroupedBackground)
+            Color(uiColor: .systemGroupedBackground)
                 .ignoresSafeArea()
             
-            Color.white
+            Color(uiColor: .secondarySystemGroupedBackground)
                 .frame(height: item.rarity == .unique ? 400 : 330)
                 .ignoresSafeArea()
             
@@ -116,18 +117,11 @@ struct LootDetailView: View {
                                     } else {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 4)
-                                                .fill(
-                                                    LinearGradient(
-                                                        colors: [.gray.opacity(0.4), .gray.opacity(0.4)],
-                                                        startPoint: .top,
-                                                        endPoint: .bottom
-                                                    )
-                                                )
+                                                .fill(Color(uiColor: .tertiarySystemFill))
                                                 .frame(width: 45, height: 58)
                                             
                                             Image(systemName: "rectangle.slash")
-                                                .foregroundColor(.black)
-                                                .opacity(0.4)
+                                                .foregroundStyle(.secondary)
                                                 .padding(.horizontal, 16)
                                                 .padding(.vertical, 12)
                                         }
@@ -161,6 +155,7 @@ struct LootDetailView: View {
                                         .offset(x: showInfo ? 0 : 20)
                                         .animation(.easeOut.delay(1.6), value: showInfo)
                                 }
+                                
                                 Divider()
                                     .opacity(showInfo ? 1 : 0)
                                     .animation(.easeOut.delay(1.7), value: showInfo)
@@ -184,7 +179,7 @@ struct LootDetailView: View {
                                     .animation(.easeOut.delay(2.0), value: showInfo)
                             }
                         }
-                        .background(Color.white)
+                        .background(Color(uiColor: .secondarySystemGroupedBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                     .padding(.horizontal)
@@ -192,6 +187,18 @@ struct LootDetailView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showEditSheet) {
+            EditItemView(item: item)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    showEditSheet = true
+                }) {
+                    Text("Éditer")
+                }
+            }
+        }
         .task {
             try? await Task.sleep(for: .seconds(0.4))
             withAnimation {
@@ -236,6 +243,7 @@ struct InfoRow<Content: View>: View {
 
 #Preview {
     NavigationStack {
-        LootDetailView(item: lootItems[0])
+        LootDetailView(item: LootItem.emptyItem)
+            .preferredColorScheme(.dark)
     }
 }

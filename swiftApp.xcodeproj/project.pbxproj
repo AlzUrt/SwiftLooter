@@ -21,6 +21,15 @@
 		35451B522CB570B10007A553 /* swiftAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35451B512CB570B10007A553 /* swiftAppUITestsLaunchTests.swift */; };
 		C4E6B6552D0041D3003A302E /* LootDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6B6542D0041D3003A302E /* LootDetailView.swift */; };
 		C4E6B6562D0068EA003A302E /* ExplicitAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35078B032D005E4F008E9AF7 /* ExplicitAnimation.swift */; };
+		C4F6B4212D2E6A0E008B2CCE /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B4202D2E6A0D008B2CCE /* Feature.swift */; };
+		C4F6B4232D2E6A23008B2CCE /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B4222D2E6A21008B2CCE /* OnboardingPageView.swift */; };
+		C4F6B4252D2E6A46008B2CCE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B4242D2E6A45008B2CCE /* OnboardingView.swift */; };
+		C4F6B4272D2E6D8E008B2CCE /* LooterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B4262D2E6D8D008B2CCE /* LooterFeature.swift */; };
+		C4F6B42B2D2E6E37008B2CCE /* LootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B42A2D2E6E36008B2CCE /* LootView.swift */; };
+		C4F6B42D2D2E6E54008B2CCE /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B42C2D2E6E52008B2CCE /* WishListView.swift */; };
+		C4F6B42F2D2E6E6E008B2CCE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B42E2D2E6E6D008B2CCE /* ProfileView.swift */; };
+		C4F6B4322D2E72A8008B2CCE /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B4312D2E72A7008B2CCE /* EditItemView.swift */; };
+		C4F6B4342D2EB046008B2CCE /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F6B4332D2EB045008B2CCE /* ItemListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +67,15 @@
 		35451B4F2CB570B10007A553 /* swiftAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftAppUITests.swift; sourceTree = "<group>"; };
 		35451B512CB570B10007A553 /* swiftAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C4E6B6542D0041D3003A302E /* LootDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailView.swift; sourceTree = "<group>"; };
+		C4F6B4202D2E6A0D008B2CCE /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		C4F6B4222D2E6A21008B2CCE /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		C4F6B4242D2E6A45008B2CCE /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C4F6B4262D2E6D8D008B2CCE /* LooterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LooterFeature.swift; sourceTree = "<group>"; };
+		C4F6B42A2D2E6E36008B2CCE /* LootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootView.swift; sourceTree = "<group>"; };
+		C4F6B42C2D2E6E52008B2CCE /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
+		C4F6B42E2D2E6E6D008B2CCE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C4F6B4312D2E72A7008B2CCE /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
+		C4F6B4332D2EB045008B2CCE /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +126,15 @@
 		35451B332CB570970007A553 /* swiftApp */ = {
 			isa = PBXGroup;
 			children = (
+				C4F6B4332D2EB045008B2CCE /* ItemListView.swift */,
+				C4F6B4312D2E72A7008B2CCE /* EditItemView.swift */,
+				C4F6B42E2D2E6E6D008B2CCE /* ProfileView.swift */,
+				C4F6B42C2D2E6E52008B2CCE /* WishListView.swift */,
+				C4F6B42A2D2E6E36008B2CCE /* LootView.swift */,
+				C4F6B4262D2E6D8D008B2CCE /* LooterFeature.swift */,
+				C4F6B4242D2E6A45008B2CCE /* OnboardingView.swift */,
+				C4F6B4222D2E6A21008B2CCE /* OnboardingPageView.swift */,
+				C4F6B4202D2E6A0D008B2CCE /* Feature.swift */,
 				35078AFF2D005A4D008E9AF7 /* ImplicitAnimation.swift */,
 				35078B012D005B9F008E9AF7 /* CustomizingAnimation.swift */,
 				35078B032D005E4F008E9AF7 /* ExplicitAnimation.swift */,
@@ -280,11 +307,20 @@
 			files = (
 				35451B372CB570970007A553 /* ContentView.swift in Sources */,
 				35078B022D005B9F008E9AF7 /* CustomizingAnimation.swift in Sources */,
+				C4F6B4212D2E6A0E008B2CCE /* Feature.swift in Sources */,
 				351557932CE4BAAA00D30B34 /* Game.swift in Sources */,
 				35078B002D005A4D008E9AF7 /* ImplicitAnimation.swift in Sources */,
+				C4F6B42D2D2E6E54008B2CCE /* WishListView.swift in Sources */,
+				C4F6B4322D2E72A8008B2CCE /* EditItemView.swift in Sources */,
+				C4F6B4232D2E6A23008B2CCE /* OnboardingPageView.swift in Sources */,
+				C4F6B42B2D2E6E37008B2CCE /* LootView.swift in Sources */,
+				C4F6B42F2D2E6E6E008B2CCE /* ProfileView.swift in Sources */,
+				C4F6B4272D2E6D8E008B2CCE /* LooterFeature.swift in Sources */,
 				3515578F2CE4A32D00D30B34 /* AddItemView.swift in Sources */,
 				C4E6B6562D0068EA003A302E /* ExplicitAnimation.swift in Sources */,
+				C4F6B4342D2EB046008B2CCE /* ItemListView.swift in Sources */,
 				C4E6B6552D0041D3003A302E /* LootDetailView.swift in Sources */,
+				C4F6B4252D2E6A46008B2CCE /* OnboardingView.swift in Sources */,
 				351557912CE4B6E300D30B34 /* LootItem.swift in Sources */,
 				35451B352CB570970007A553 /* swiftAppApp.swift in Sources */,
 			);

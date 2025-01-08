@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct swiftAppApp: App {
+    @AppStorage("isOnboardingDone") private var isOnboardingDone: Bool = false
+    @StateObject private var inventory = Inventory()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isOnboardingDone {
+                ContentView()
+                    .environmentObject(inventory)
+            } else {
+                OnboardingView()
+            }
         }
     }
 }

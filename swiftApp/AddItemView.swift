@@ -35,21 +35,22 @@ enum Rarity : CaseIterable {
 
 
 struct AddItemView: View {
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var inventory: Inventory
+    let isWishList: Bool
     
+    @State private var name = ""
     @State private var rarity: Rarity = .common
     @State private var game: Game = .emptyGame
     @State private var type: ItemType = .magic
     @State private var quantity: Int = 1
-    @State private var attackStrength: Int = 0
-    @State private var name: String = ""
     @State private var isAttackItem: Bool = false
-    @EnvironmentObject var inventory: Inventory
-    @Environment(\.dismiss) var close
-
+    @State private var attackStrength: Int = 0
+    
     var body: some View {
         NavigationStack {
             Form {
-                Section() {
+                Section {
                     TextField("Nom de l'objet", text: $name)
                     
                     Picker("Rareté", selection: $rarity) {
@@ -58,40 +59,40 @@ struct AddItemView: View {
                         }
                     }
                 }
-                Section() {
+                
+                Section {
                     Picker("Jeu", selection: $game) {
                         Text("Non spécifié").tag(Game.emptyGame)
-                        
                         ForEach(availableGames) { game in
                             Text(game.name).tag(game)
                         }
                     }
+                    
                     Stepper("Quantité: \(quantity)", value: $quantity, in: 1...99)
                 }
-                Section() {
-                    HStack{
+                
+                Section {
+                    HStack {
                         Text("Type")
                         Spacer()
                         Text("\(type.showEmoji())")
-
                     }
                     
-
                     Picker("Type", selection: $type) {
                         ForEach(ItemType.allCases, id: \.self) { type in
                             Text(type.showEmoji())
                         }
-                        
                     }
                     .pickerStyle(.palette)
                 }
-                Section() {
+                
+                Section {
                     Toggle("Objet d'attaque ?", isOn: $isAttackItem)
-                                            .toggleStyle(SwitchToggleStyle(tint: .blue))
-
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                    
                     if isAttackItem {
                         Stepper("Force d'attaque: \(attackStrength)", value: $attackStrength, in: 1...99)
-                       }
+                    }
                 }
                 
                 Section {
@@ -101,22 +102,23 @@ struct AddItemView: View {
                             name: name,
                             type: type,
                             rarity: rarity,
-                            attackStrength: attackStrength,
-                            game: availableGames[1]
+                            attackStrength: isAttackItem ? attackStrength : nil,
+                            game: game,
+                            isWishList: isWishList
                         )
                         
                         inventory.addItem(newItem)
-                        close()
+                        dismiss()
                     }
                     .disabled(name.isEmpty)
                 }
             }
-            .navigationTitle("Ajouter un objet")
+            .navigationTitle(isWishList ? "Ajouter à la wishlist" : "Ajouter un objet")
         }
     }
 }
 
 #Preview {
-    AddItemView().environmentObject(Inventory())
+    AddItemView(isWishList: false)
+        .environmentObject(Inventory())
 }
-

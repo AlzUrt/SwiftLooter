@@ -5,63 +5,6 @@
 //  Created by MAZEL Florian on 08/10/2024.
 //
 
-//import SwiftUI
-//
-//class Inventory: ObservableObject {
-//    @Published var loot = ["Epée", "Bouclier", "Armure"]
-//    
-//    func addItem(item: String) {
-//        loot.append(item)
-//    }
-//}
-//
-//struct ContentView: View {
-//    @StateObject var inventory = Inventory()
-//
-//    @State var showAddItemView = false
-//    
-////    @EnvironmentObject var inventoryLoot: Inventory
-//
-//    var body: some View {
-//        NavigationStack {
-//            List {
-//                Button(action: {
-//                    inventory.addItem(item: "Magie de feu")
-//                }, label: {
-//                    Text("Ajouter")
-//                })
-//                ForEach(inventory.loot, id: \.self) { item in
-//                    Text(item)
-//                }
-//            }
-//            .sheet(isPresented: $showAddItemView, content: {
-//                    AddItemView().environmentObject(inventory)
-//                })
-//            .navigationBarTitle("Loot") // Notre titre de page, choisissez le titre que vous voulez
-//                .toolbar(content: { // La barre d'outil de notre page
-//                    ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-//                        Button(action: {
-//                            showAddItemView.toggle() // L'action de notre bouton
-//                        }, label: {
-//                            Image(systemName: "plus.circle.fill")
-//                        })
-//                    }
-//                })
-//            List {
-//                ForEach(inventory.loot, id: \.self) { item in
-//                    Text(item)
-//                }
-//            }
-//        }
-//        .environmentObject(inventory)
-//
-//    }
-//}
-//
-//#Preview {
-//    ContentView()
-//}
-
 import SwiftUI
 
 class Inventory: ObservableObject {
@@ -75,49 +18,61 @@ class Inventory: ObservableObject {
     func addItem(_ item: LootItem) {
         items.append(item)
     }
+    
+    func deleteItem(at offsets: IndexSet, isWishList: Bool) {
+        let filteredIndices = items.indices.filter { items[$0].isWishList == isWishList }
+        let toDelete = offsets.map { filteredIndices[$0] }
+        items.remove(atOffsets: IndexSet(toDelete))
+    }
+    
+    func updateItem(_ updatedItem: LootItem) {
+        if let index = items.firstIndex(where: { $0.id == updatedItem.id }) {
+            items[index] = updatedItem
+        }
+    }
+    
+    func filteredItems(isWishList: Bool) -> [LootItem] {
+        items.filter { $0.isWishList == isWishList }
+    }
 }
 
+import SwiftUI
+
 struct ContentView: View {
-    @StateObject var inventory = Inventory()
-    @State var showAddItemView = false
+    @StateObject private var inventory = Inventory()
+    @State private var selectedFeature: LooterFeature = .loot
+    @AppStorage("isOnboardingDone") private var isOnboardingDone: Bool = false
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(inventory.items) { item in
-                    NavigationLink(destination: LootDetailView(item: item)) {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Circle()
-                                    .fill(Color(item.rarity.showColor()))
-                                    .frame(width: 20, height: 20)
-                                Text(item.name)
-                                Spacer()
-                                Text(item.type.showEmoji())
-                            }
-
-                            Text("Quantité : \(item.quantity)")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
-                    }
+        TabView(selection: $selectedFeature) {
+            LootView()
+                .tabItem {
+                    Label("Loot", systemImage: "bag.fill")
                 }
-            }
-            .sheet(isPresented: $showAddItemView, content: {
-                AddItemView().environmentObject(inventory)
-            })
-            .navigationBarTitle("Loot")
-            .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button(action: {
-                        showAddItemView.toggle()
-                    }, label: {
-                        Image(systemName: "plus.circle.fill")
-                    })
+                .tag(LooterFeature.loot)
+            
+            WishListView()
+                .tabItem {
+                    Label("Wishlist", systemImage: "heart.fill")
                 }
-            }
+                .tag(LooterFeature.wishList)
+            
+            ProfileView()
+                .tabItem {
+                    Label("Profil", systemImage: "person.fill")
+                }
+                .tag(LooterFeature.profile)
         }
         .environmentObject(inventory)
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                Button(action: {
+                    UserDefaults.standard.set(false, forKey: "isOnboardingDone")
+                }, label: {
+                    Image(systemName: "arrow.counterclockwise")
+                })
+            }
+        }
     }
 }
 
